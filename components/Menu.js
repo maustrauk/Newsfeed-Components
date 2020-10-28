@@ -19,6 +19,10 @@ let menuItems = [
   </div>
 
   The 'menuMaker' takes an array of menu items as its only argument.
+
+  Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
+  Add those items to the <ul>
+
 */
 
 function menuMaker (menuArray) {
@@ -34,15 +38,17 @@ function menuMaker (menuArray) {
   menu.classList.add('menu');
 
   menu.appendChild(ul);
-  li.forEach(element => ul.appendChild(element));
+  li.forEach((element, i) => {
+    element.textContent = menuItems[i];
+    ul.appendChild(element);
+  });
   
   return menu;
 }
 
 
 /*
-  Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
-  Add those items to the <ul>
+  
 
   Step 3: Still inside your function, select from the DOM the menu button (the element with a class of 'menu-button').
 
