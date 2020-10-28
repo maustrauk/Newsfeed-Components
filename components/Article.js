@@ -1,5 +1,6 @@
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
+import { additionalData } from './AdditionalData.js';
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
 const data = [
   {
@@ -89,6 +90,8 @@ const data = [
   }
 ];
 
+data.push(additionalData);
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
@@ -151,6 +154,9 @@ function articleMaker (artObj) {
 /*
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
+
+  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+  Refresh the page to see the new article.
 */
 
 const articles = document.querySelector('.articles');
@@ -160,8 +166,3 @@ data.forEach( (element) =>  {
   articles.appendChild(article);
 })
 
-/*
-
-  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
-  Refresh the page to see the new article.
-*/
