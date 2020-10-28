@@ -106,6 +106,8 @@ const data = [
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
+  Step 3: Don't forget to return something from your function!
+
 */
 
 function articleMaker ({artObj}) {
@@ -136,7 +138,7 @@ function articleMaker ({artObj}) {
 /*
   
 
-  Step 3: Don't forget to return something from your function!
+  
 
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
