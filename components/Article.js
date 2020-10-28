@@ -110,38 +110,57 @@ const data = [
 
 */
 
-function articleMaker ({artObj}) {
+function articleMaker (artObj) {
 
   const article = document.createElement('div');
   const title = document.createElement('h2');
-  const p1 = document.createElement('p');
+  const date = document.createElement('p');
   const span = document.createElement('span');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
 
   article.classList.add('article');
-  title.textContent = artObj.title;
-  p1.classList.add('date');
-  p1.textContent = artObj.date;
+  date.classList.add('date');
   span.classList.add('expandButton');
+  firstParagraph.classList.add('firstParagraph');
+  secondParagraph.classList.add('secondParagraph');
+  thirdParagraph.classList.add('thirdParagraph');
+
+  title.textContent = artObj.title;
+  date.textContent = artObj.date;
+  firstParagraph.textContent = artObj.firstParagraph;
+  secondParagraph.textContent = artObj.secondParagraph;
+  thirdParagraph.textContent = artObj.thirdParagraph;
   span.textContent = "+";
 
   article.appendChild(title);
-  article.appendChild(p1);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
   article.appendChild(span);
 
-  span.addEventListener(() => {
-    article.classList.toggle(article-open);
+  span.addEventListener('click', () => {
+    article.classList.toggle('article-open');
   })
 
   return article;
 }
 
 /*
-  
-
-  
-
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
+*/
+
+const articles = document.querySelector('.articles');
+
+data.forEach( (element) =>  {
+  const article = articleMaker(element);
+  articles.appendChild(article);
+})
+
+/*
 
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
