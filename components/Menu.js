@@ -21,6 +21,23 @@ let menuItems = [
   The 'menuMaker' takes an array of menu items as its only argument.
 */
 
+function menuMaker (menuArray) {
+
+  const menu = document.createElement('div');
+  const ul = document.createElement('ul');
+  const li = [];
+
+  for (let i=0; i < menuArray.length; i++) {
+    li.push(document.createElement('li'));
+  }
+  
+  menu.classList.add('menu');
+
+  menu.appendChild(ul);
+  li.forEach(element => ul.appendChild(element));
+  
+  return menu;
+}
 
 
 /*
