@@ -50,8 +50,18 @@ function menuMaker (menuArray) {
   });
   
   const menuButton = document.querySelector('.menu-button');
-  menuButton.addEventListener('click', () => menu.classList.toggle('menu--open'));
 
+  menuButton.addEventListener('click', () => {
+    menu.style.display = "block";
+    let status = menu.classList.toggle('menu--open');
+    menu.classList.remove('menu--closed')
+    if (!status) {
+      menu.classList.add('menu--closed');
+      setTimeout(() => menu.style.display  = "none", 1990);
+    } 
+  });
+
+  
   return menu;
 }
 
@@ -63,3 +73,10 @@ function menuMaker (menuArray) {
 const myMenu = menuMaker(menuItems);
 const header = document.querySelector('.header');
 header.appendChild(myMenu);
+
+const articles = document.querySelector(".articles");
+articles.addEventListener('click', () => {
+  myMenu.classList.remove('menu--open');
+  myMenu.classList.add('menu--closed');
+  setTimeout(() => myMenu.style.display  = "none", 1990);
+})

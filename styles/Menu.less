@@ -16,6 +16,7 @@
   border-left: none;
   border-bottom: none;
   z-index: 2; /* This set the layer level of the element, it has precendence over initial level of 1*/
+
 }
 
 .menu ul li{
@@ -26,5 +27,42 @@
 }
 
 .menu--open {
-  display: block;
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.menu--closed {
+  animation-name: deslide;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+}
+
+
+@keyframes slide {
+  0% {
+    background-color: #004D40;
+    width: 0%;
+  }
+  100% {
+    background-color: #08004d;
+    width: 10%;
+  }
+}
+
+@keyframes deslide {
+  100% {
+    background-color: #004D40;
+    width: 0%;
+  }
+  0% {
+    background-color: #08004d;
+    width: 10%;
+  }
 }
