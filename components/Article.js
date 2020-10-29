@@ -175,3 +175,15 @@ data.forEach( (element) =>  {
   articles.appendChild(article);
 })
 
+//Component Constructor
+
+function articleConstructor (artObj) {
+  const newArticle = {};
+  newArticle.title = artObj.title;
+  newArticle.date = artObj.date;
+  newArticle.firstParagraph = artObj.firstParagraph;
+  newArticle.secondParagraph = artObj.secondParagraph;
+  newArticle.thirdParagraph = artObj.thirdParagraph;
+  data.push(newArticle);
+}
+
