@@ -28,6 +28,55 @@ let menuItems = [
   Step 4: Add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on div.menu (your div with a 'menu' class).
 
   Step 5: Don't forget to return your div.menu.
+*/
 
+function menuMaker (menuArray) {
+
+  const menu = document.createElement('div');
+  const ul = document.createElement('ul');
+  const li = [];
+
+  for (let i=0; i < menuArray.length; i++) {
+    li.push(document.createElement('li'));
+  }
+  
+  menu.classList.add('menu');
+
+  menu.appendChild(ul);
+  
+  li.forEach((element, i) => {
+    element.textContent = menuItems[i];
+    ul.appendChild(element);
+  });
+  
+  const menuButton = document.querySelector('.menu-button');
+
+  menuButton.addEventListener('click', () => {
+    menu.style.display = "block";
+    let status = menu.classList.toggle('menu--open');
+    menu.classList.remove('menu--closed')
+    if (!status) {
+      menu.classList.add('menu--closed');
+      setTimeout(() => menu.style.display  = "none", 1990);
+    } 
+  });
+
+  
+  return menu;
+}
+
+
+/*
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+const myMenu = menuMaker(menuItems);
+const header = document.querySelector('.header');
+header.appendChild(myMenu);
+
+const articles = document.querySelector(".articles");
+articles.addEventListener('click', () => {
+  myMenu.classList.remove('menu--open');
+  myMenu.classList.add('menu--closed');
+  setTimeout(() => myMenu.style.display  = "none", 1990);
+})

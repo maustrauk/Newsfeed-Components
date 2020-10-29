@@ -1,5 +1,6 @@
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
+import { additionalData } from './AdditionalData.js';
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
 const data = [
   {
@@ -89,6 +90,10 @@ const data = [
   }
 ];
 
+data.push(additionalData);
+const myArt = {title : "Nice article", date : "Oct 28, 2020", firstParagraph : "Hi"};
+articleConstructor(myArt);
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
@@ -108,9 +113,79 @@ const data = [
 
   Step 3: Don't forget to return something from your function!
 
+*/
+
+function articleMaker (artObj) {
+
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const close = document.createElement('button');
+  const date = document.createElement('p');
+  const span = document.createElement('span');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+
+  article.classList.add('article');
+  close.classList.add('close');
+  date.classList.add('date');
+  span.classList.add('expandButton');
+  firstParagraph.classList.add('firstParagraph');
+  secondParagraph.classList.add('secondParagraph');
+  thirdParagraph.classList.add('thirdParagraph');
+
+  title.textContent = artObj.title;
+  close.textContent = "Close";
+  date.textContent = artObj.date;
+  firstParagraph.textContent = artObj.firstParagraph;
+  secondParagraph.textContent = artObj.secondParagraph;
+  thirdParagraph.textContent = artObj.thirdParagraph;
+  span.textContent = "Click to Expand";
+
+  article.appendChild(title);
+  article.appendChild(close);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(span);
+
+  span.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+    span.textContent = "Click to Close";
+  })
+
+  close.addEventListener('click', () => {
+    article.classList.add('article-close');
+  })
+
+  return article;
+}
+
+/*
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+const articles = document.querySelector('.articles');
+
+data.forEach( (element) =>  {
+  const article = articleMaker(element);
+  articles.appendChild(article);
+})
+
+//Component Constructor
+
+function articleConstructor (artObj) {
+  const newArticle = {};
+  newArticle.title = artObj.title;
+  newArticle.date = artObj.date;
+  newArticle.firstParagraph = artObj.firstParagraph;
+  newArticle.secondParagraph = artObj.secondParagraph;
+  newArticle.thirdParagraph = artObj.thirdParagraph;
+  data.push(newArticle);
+}
+

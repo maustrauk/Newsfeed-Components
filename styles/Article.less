@@ -42,9 +42,25 @@
 }
 
 .article-open {
-  height: 400px;
+  animation-name: sliderArticle;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
+.article-close {
+  display: none;
+}
 
+@keyframes sliderArticle {
+  0% {
+    height: 50px;
+  }
+  100% {
+    height: 400px;
+  }
+}
 
 
