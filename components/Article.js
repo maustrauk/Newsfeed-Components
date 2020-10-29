@@ -117,6 +117,7 @@ function articleMaker (artObj) {
 
   const article = document.createElement('div');
   const title = document.createElement('h2');
+  const close = document.createElement('button');
   const date = document.createElement('p');
   const span = document.createElement('span');
   const firstParagraph = document.createElement('p');
@@ -124,6 +125,7 @@ function articleMaker (artObj) {
   const thirdParagraph = document.createElement('p');
 
   article.classList.add('article');
+  close.classList.add('close');
   date.classList.add('date');
   span.classList.add('expandButton');
   firstParagraph.classList.add('firstParagraph');
@@ -131,6 +133,7 @@ function articleMaker (artObj) {
   thirdParagraph.classList.add('thirdParagraph');
 
   title.textContent = artObj.title;
+  close.textContent = "Close";
   date.textContent = artObj.date;
   firstParagraph.textContent = artObj.firstParagraph;
   secondParagraph.textContent = artObj.secondParagraph;
@@ -138,6 +141,7 @@ function articleMaker (artObj) {
   span.textContent = "Click to Expand";
 
   article.appendChild(title);
+  article.appendChild(close);
   article.appendChild(date);
   article.appendChild(firstParagraph);
   article.appendChild(secondParagraph);
@@ -147,6 +151,10 @@ function articleMaker (artObj) {
   span.addEventListener('click', () => {
     article.classList.toggle('article-open');
     span.textContent = "Click to Close";
+  })
+
+  close.addEventListener('click', () => {
+    article.classList.add('article-close');
   })
 
   return article;
