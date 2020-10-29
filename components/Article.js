@@ -91,6 +91,8 @@ const data = [
 ];
 
 data.push(additionalData);
+const myArt = {title : "Nice article", date : "Oct 28, 2020", firstParagraph : "Hi"};
+articleConstructor(myArt);
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
