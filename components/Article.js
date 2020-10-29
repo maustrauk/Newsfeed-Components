@@ -135,7 +135,7 @@ function articleMaker (artObj) {
   firstParagraph.textContent = artObj.firstParagraph;
   secondParagraph.textContent = artObj.secondParagraph;
   thirdParagraph.textContent = artObj.thirdParagraph;
-  span.textContent = "+";
+  span.textContent = "Click to Expand";
 
   article.appendChild(title);
   article.appendChild(date);
@@ -146,6 +146,7 @@ function articleMaker (artObj) {
 
   span.addEventListener('click', () => {
     article.classList.toggle('article-open');
+    span.textContent = "Click to Close";
   })
 
   return article;
